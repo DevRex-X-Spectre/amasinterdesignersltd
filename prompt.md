@@ -1064,10 +1064,3 @@ Strictly build the public-facing storefront website using:
 - Clean reusable React/Next.js components
 
 Most importantly, preserve the quality of the original template while transforming it into a unique, polished, AMAS-specific website.
-
-git init
-git add .
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/DevRex-X-Spectre/amasinterdesignersltd.git
-git push -u origin main
