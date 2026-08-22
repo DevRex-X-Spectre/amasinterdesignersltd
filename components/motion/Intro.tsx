@@ -1,9 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import gsap from "gsap";
 import { site } from "@/data/site";
 import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
+
+export const INTRO_COMPLETE_EVENT = "amas-intro-complete";
+
+function announceIntroComplete() {
+  window.dispatchEvent(new Event(INTRO_COMPLETE_EVENT));
+}
+
+function subscribe() {
+  return () => {};
+}
+
+function getIntroSeen() {
+  return sessionStorage.getItem("amas-intro") === "1";
+}
 
 export function Intro() {
   const wrap = useRef<HTMLDivElement>(null);
@@ -11,21 +25,25 @@ export function Intro() {
   const mark = useRef<HTMLDivElement>(null);
   const line = useRef<HTMLDivElement>(null);
   const reduced = usePrefersReducedMotion();
-  const [show, setShow] = useState(false);
+  const seen = useSyncExternalStore(subscribe, getIntroSeen, () => true);
+  const [done, setDone] = useState(false);
+  const play = !reduced && !seen && !done;
 
   useEffect(() => {
-    if (reduced) return;
-    if (sessionStorage.getItem("amas-intro")) return;
-    setShow(true);
-  }, [reduced]);
+    if (!play) {
+      announceIntroComplete();
+      return;
+    }
 
-  useEffect(() => {
-    if (!show) return;
     const root = wrap.current;
     const sheet = panel.current;
     const brand = mark.current;
     const rule = line.current;
-    if (!root || !sheet || !brand || !rule) return;
+    if (!root || !sheet || !brand || !rule) {
+      announceIntroComplete();
+      setDone(true);
+      return;
+    }
 
     document.body.style.overflow = "hidden";
     sessionStorage.setItem("amas-intro", "1");
@@ -34,7 +52,8 @@ export function Intro() {
       defaults: { ease: "power4.inOut" },
       onComplete: () => {
         document.body.style.overflow = "";
-        setShow(false);
+        announceIntroComplete();
+        setDone(true);
       },
     });
 
@@ -50,9 +69,9 @@ export function Intro() {
       tl.kill();
       document.body.style.overflow = "";
     };
-  }, [show]);
+  }, [play]);
 
-  if (!show) return null;
+  if (!play) return null;
 
   return (
     <div

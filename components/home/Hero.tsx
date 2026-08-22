@@ -2,12 +2,13 @@
 
 import { Icon } from "@iconify/react";
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { heroSlides } from "@/data/gallery";
 import { Button } from "@/components/shared/Button";
 import { Magnetic } from "@/components/motion/Magnetic";
+import { INTRO_COMPLETE_EVENT } from "@/components/motion/Intro";
 import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 
 function SplitLine({
@@ -39,7 +40,7 @@ export function Hero() {
   const textRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const slidesRef = useRef<HTMLDivElement>(null);
-  const progressRef = useRef<HTMLDivElement>(null);
+  const kenTween = useRef<gsap.core.Tween | null>(null);
 
   const go = useCallback((delta: number) => {
     setIndex((current) => {
@@ -57,17 +58,6 @@ export function Hero() {
   }, [reduced]);
 
   useEffect(() => {
-    const bar = progressRef.current;
-    if (!bar || reduced) return;
-    gsap.killTweensOf(bar);
-    gsap.fromTo(
-      bar,
-      { scaleX: 0 },
-      { scaleX: 1, duration: 6.5, ease: "none" },
-    );
-  }, [index, reduced]);
-
-  useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") go(1);
       if (event.key === "ArrowLeft") go(-1);
@@ -76,32 +66,53 @@ export function Hero() {
     return () => window.removeEventListener("keydown", onKey);
   }, [go]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const root = textRef.current;
     if (!root) return;
     const words = root.querySelectorAll(".hero-word");
     const rest = root.querySelectorAll(".hero-text");
 
     if (reduced) {
-      gsap.set([words, rest], { y: 0, opacity: 1, clearProps: "transform" });
+      gsap.set([words, rest], { y: 0, yPercent: 0, rotateZ: 0, opacity: 1 });
       return;
     }
 
-    const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-    tl.fromTo(
-      words,
-      { yPercent: 120, rotateZ: 4 },
-      { yPercent: 0, rotateZ: 0, duration: 1.15, stagger: 0.06 },
-    ).fromTo(
-      rest,
-      { y: 36, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.9, stagger: 0.12 },
-      "-=0.55",
-    );
+    gsap.set(words, { yPercent: 120, rotateZ: 4 });
+    gsap.set(rest, { y: 36, opacity: 0 });
+
+    let tl: gsap.core.Timeline | null = null;
+    let played = false;
+    const play = () => {
+      if (played) return;
+      played = true;
+      tl?.kill();
+      tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.to(words, {
+        yPercent: 0,
+        rotateZ: 0,
+        duration: 1.05,
+        stagger: 0.05,
+      }).to(
+        rest,
+        { y: 0, opacity: 1, duration: 0.85, stagger: 0.1 },
+        "-=0.65",
+      );
+    };
+
+    const introPending = !window.sessionStorage.getItem("amas-intro");
+    let timeout: number | undefined;
+
+    if (!introPending) {
+      play();
+    } else {
+      window.addEventListener(INTRO_COMPLETE_EVENT, play, { once: true });
+      timeout = window.setTimeout(play, 3000);
+    }
 
     return () => {
-      tl.kill();
-      gsap.set([words, rest], { clearProps: "all" });
+      window.removeEventListener(INTRO_COMPLETE_EVENT, play);
+      if (timeout) window.clearTimeout(timeout);
+      tl?.kill();
     };
   }, [reduced]);
 
@@ -127,6 +138,25 @@ export function Hero() {
       tween.kill();
     };
   }, [reduced]);
+
+  useEffect(() => {
+    const root = slidesRef.current;
+    if (!root || reduced) return;
+    const images = root.querySelectorAll("img");
+    const active = images[index];
+    if (!active) return;
+
+    kenTween.current?.kill();
+    kenTween.current = gsap.fromTo(
+      active,
+      { scale: 1.08 },
+      { scale: 1, duration: 6.5, ease: "none" },
+    );
+
+    return () => {
+      kenTween.current?.kill();
+    };
+  }, [index, reduced]);
 
   useEffect(() => {
     const slides = slidesRef.current;
@@ -166,7 +196,7 @@ export function Hero() {
               sizes="100vw"
               className={`object-cover transition-opacity duration-[1400ms] ease-in-out ${
                 i === index ? "opacity-70" : "opacity-0"
-              } ${i === index && !reduced ? "animate-ken-burns" : "scale-110"}`}
+              }`}
             />
           ))}
         </div>
@@ -176,11 +206,6 @@ export function Hero() {
         ref={textRef}
         className="relative z-10 flex max-w-5xl flex-col items-center px-6 text-center"
       >
-        <div className="mb-3 overflow-hidden">
-          <p className="hero-text text-xs font-medium tracking-[0.32em] text-accent uppercase">
-            AMAS Inter Designers
-          </p>
-        </div>
         <div className="mb-3">
           <SplitLine
             text="Signs people notice."
@@ -238,45 +263,21 @@ export function Hero() {
         </button>
       </Magnetic>
 
-      <div className="absolute right-0 bottom-0 left-0 z-10">
-        <div className="h-[2px] origin-left bg-white/10">
-          <div
-            ref={progressRef}
-            className="h-full origin-left scale-x-0 bg-accent"
-          />
-        </div>
-        <div className="flex items-center justify-center gap-6 px-6 py-6">
-          <button
-            type="button"
-            onClick={() => go(-1)}
-            className="flex h-9 w-9 items-center justify-center border border-border text-white md:hidden"
-            aria-label="Previous slide"
-          >
-            <Icon icon="solar:arrow-left-linear" className="text-lg" />
-          </button>
-          <div className="flex gap-2" role="tablist" aria-label="Slide indicators">
-            {heroSlides.map((item, i) => (
-              <button
-                key={item.src}
-                type="button"
-                role="tab"
-                aria-selected={i === index}
-                aria-label={`Show slide ${i + 1}`}
-                onClick={() => setIndex(i)}
-                className={`h-1.5 rounded-full transition-all duration-500 ${
-                  i === index ? "w-10 bg-accent" : "w-2 bg-white/30 hover:bg-white/70"
-                }`}
-              />
-            ))}
-          </div>
-          <button
-            type="button"
-            onClick={() => go(1)}
-            className="flex h-9 w-9 items-center justify-center border border-border text-white md:hidden"
-            aria-label="Next slide"
-          >
-            <Icon icon="solar:arrow-right-linear" className="text-lg" />
-          </button>
+      <div className="absolute right-0 bottom-0 left-0 z-10 flex items-center justify-center px-6 py-6">
+        <div className="flex gap-2" role="tablist" aria-label="Slide indicators">
+          {heroSlides.map((item, i) => (
+            <button
+              key={item.src}
+              type="button"
+              role="tab"
+              aria-selected={i === index}
+              aria-label={`Show slide ${i + 1}`}
+              onClick={() => setIndex(i)}
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                i === index ? "w-10 bg-accent" : "w-2 bg-white/30 hover:bg-white/70"
+              }`}
+            />
+          ))}
         </div>
       </div>
 

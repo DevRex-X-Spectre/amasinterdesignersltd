@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useLayoutEffect, useRef, type ReactNode } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type RevealProps = {
   children: ReactNode;
@@ -17,13 +16,13 @@ export function Reveal({
   children,
   className = "",
   delay = 0,
-  y = 72,
-  duration = 1.15,
+  y = 40,
+  duration = 1,
   stagger = false,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
 
@@ -33,35 +32,37 @@ export function Reveal({
       return;
     }
 
-    gsap.registerPlugin(ScrollTrigger);
     const targets = stagger && el.children.length > 0 ? el.children : el;
+    gsap.set(targets, { y, opacity: 0 });
 
-    const tween = gsap.fromTo(
-      targets,
-      { y, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration,
-        delay,
-        ease: "power4.out",
-        stagger: stagger ? 0.1 : 0,
-        immediateRender: false,
-        scrollTrigger: {
-          trigger: el,
-          start: "top 88%",
-          once: true,
-          toggleActions: "play none none none",
-        },
+    const tween = gsap.to(targets, {
+      y: 0,
+      opacity: 1,
+      duration,
+      delay,
+      ease: "power3.out",
+      stagger: stagger ? 0.08 : 0,
+      paused: true,
+      overwrite: "auto",
+      onComplete: () => {
+        gsap.set(targets, { clearProps: "transform,opacity" });
       },
-    );
+    });
 
-    ScrollTrigger.refresh();
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          tween.play();
+          io.disconnect();
+        }
+      },
+      { root: null, rootMargin: "0px 0px -12% 0px", threshold: 0.08 },
+    );
+    io.observe(el);
 
     return () => {
-      tween.scrollTrigger?.kill();
+      io.disconnect();
       tween.kill();
-      gsap.set(targets, { clearProps: "all" });
     };
   }, [delay, y, duration, stagger]);
 

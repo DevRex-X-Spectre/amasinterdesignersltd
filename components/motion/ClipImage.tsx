@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useLayoutEffect, useRef, type ReactNode } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function ClipImage({
   children,
@@ -13,56 +12,53 @@ export function ClipImage({
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    gsap.registerPlugin(ScrollTrigger);
     const inner = el.querySelector("img");
+    gsap.set(el, { clipPath: "inset(12% 8% 12% 8%)" });
+    if (inner) gsap.set(inner, { scale: 1.12 });
 
-    const tween = gsap.fromTo(
-      el,
-      { clipPath: "inset(18% 12% 18% 12%)" },
-      {
-        clipPath: "inset(0% 0% 0% 0%)",
-        duration: 1.4,
-        ease: "power4.out",
-        immediateRender: false,
-        scrollTrigger: {
-          trigger: el,
-          start: "top 80%",
-          once: true,
-        },
-      },
-    );
+    const tween = gsap.to(el, {
+      clipPath: "inset(0% 0% 0% 0%)",
+      duration: 1.25,
+      ease: "power3.out",
+      paused: true,
+    });
 
     const zoom = inner
-      ? gsap.fromTo(
-          inner,
-          { scale: 1.18 },
-          {
-            scale: 1,
-            duration: 1.6,
-            ease: "power3.out",
-            immediateRender: false,
-            scrollTrigger: {
-              trigger: el,
-              start: "top 80%",
-              once: true,
-            },
-          },
-        )
+      ? gsap.to(inner, {
+          scale: 1,
+          duration: 1.45,
+          ease: "power3.out",
+          paused: true,
+        })
       : null;
 
-    ScrollTrigger.refresh();
+    const play = () => {
+      tween.play();
+      zoom?.play();
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          play();
+          io.disconnect();
+        }
+      },
+      { root: null, rootMargin: "0px 0px -15% 0px", threshold: 0.1 },
+    );
+    io.observe(el);
 
     return () => {
-      tween.scrollTrigger?.kill();
+      io.disconnect();
       tween.kill();
-      zoom?.scrollTrigger?.kill();
       zoom?.kill();
       gsap.set(el, { clearProps: "clipPath" });
+      if (inner) gsap.set(inner, { clearProps: "transform" });
     };
   }, []);
 
