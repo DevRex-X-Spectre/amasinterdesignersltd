@@ -1,26 +1,234 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "lenis/dist/lenis.css";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #0d0d0d;
+  --color-foreground: #ffffff;
+  --color-surface: #1a1d21;
+  --color-border: #2a2e34;
+  --color-muted: #b0b0b0;
+  --color-accent: #ff3c3c;
+  --color-accent-hover: #c62828;
+  --color-border-hover: #4a4e54;
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-montserrat);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: #0d0d0d;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #0d0d0d;
+  color: #ffffff;
+  font-family: var(--font-inter), Inter, system-ui, sans-serif;
+}
+
+::selection {
+  background: #ff3c3c;
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2e34;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0;
+}
+
+:focus-visible {
+  outline: 2px solid #ff3c3c;
+  outline-offset: 3px;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes kenBurns {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee 50s linear infinite reverse;
+}
+
+.group\/marquee:hover .animate-marquee,
+.group\/marquee:hover .animate-marquee-reverse,
+.animate-marquee:hover,
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+.animate-slide-down {
+  animation: slideDown 2s ease-in-out infinite;
+}
+
+.animate-ken-burns {
+  animation: kenBurns 10s ease-out forwards;
+}
+
+@keyframes shineSweep {
+  0% {
+    transform: translateX(-120%) skewX(-16deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-16deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.btn-shine:hover::after {
+  animation: shineSweep 0.7s ease;
+}
+
+.site-cursor-dot,
+.site-cursor-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 9999px;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.site-cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: #ff3c3c;
+}
+
+.site-cursor-ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  transition:
+    width 0.25s ease,
+    height 0.25s ease,
+    margin 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.site-cursor-ring.is-hover {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  border-color: #ff3c3c;
+  background: rgba(255, 60, 60, 0.08);
+}
+
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.text-shimmer {
+  background: linear-gradient(90deg, #ffffff 0%, #ff3c3c 40%, #ffffff 80%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 3.5s linear infinite;
+}
+
+.cta-orb {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+.process-line {
+  transform-origin: left center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-reverse,
+  .animate-slide-down,
+  .animate-ken-burns,
+  .cta-orb,
+  .text-shimmer {
+    animation: none;
+  }
+
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: auto !important;
+  }
 }
