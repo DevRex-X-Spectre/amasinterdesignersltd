@@ -10,7 +10,7 @@ export const site = {
   tagline: "Signs, branding, and outdoor work, made and installed.",
   description:
     "AMAS Inter Designers Ltd. designs, builds, and installs signs, branding, print, and outdoor work for businesses, schools, hotels, and public sites.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.amasinterdesigners.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://amasinterdesignersltd.vercel.app",
   locale: "en_NG",
   contact: {
     phone: "+234 906 048 8721",

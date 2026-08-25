@@ -84,24 +84,38 @@ export default async function ProjectDetailPage({ params }: Props) {
       </section>
       <section className="bg-background py-24">
         <Container className="grid grid-cols-1 gap-16 md:grid-cols-3">
-          <div className="md:col-span-2 space-y-10">
+          <div className="space-y-10 md:col-span-2">
             <div>
               <h2 className="font-display mb-3 text-2xl font-semibold">Overview</h2>
               <p className="text-sm leading-relaxed font-light text-muted">
                 {project.overview}
               </p>
             </div>
-            <div>
-              <h2 className="font-display mb-3 text-2xl font-semibold">Challenge</h2>
-              <p className="text-sm leading-relaxed font-light text-muted">
-                {project.challenge}
+            <div className="border-t border-border pt-8">
+              <h2 className="font-display mb-3 text-2xl font-semibold">Project specifications</h2>
+              <p className="mb-6 max-w-2xl text-sm leading-relaxed font-light text-muted">
+                These are the details that help us price a similar sign accurately. Final materials, finish, and measurements are confirmed for each site.
               </p>
-            </div>
-            <div>
-              <h2 className="font-display mb-3 text-2xl font-semibold">Solution</h2>
-              <p className="text-sm leading-relaxed font-light text-muted">
-                {project.solution}
-              </p>
+              <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="rounded-xl bg-surface p-5">
+                  <dt className="text-xs tracking-widest text-muted uppercase">Sign category</dt>
+                  <dd className="mt-2 text-sm font-medium text-white">{project.category}</dd>
+                </div>
+                <div className="rounded-xl bg-surface p-5">
+                  <dt className="text-xs tracking-widest text-muted uppercase">Size required for pricing</dt>
+                  <dd className="mt-2 text-sm font-medium text-white">Width x height, plus depth where applicable</dd>
+                </div>
+                <div className="rounded-xl bg-surface p-5">
+                  <dt className="text-xs tracking-widest text-muted uppercase">Lighting</dt>
+                  <dd className="mt-2 text-sm font-medium text-white">
+                    {project.serviceSlugs.some((slug) => slug.includes("led")) ? "LED or illuminated finish" : "Illumination to be confirmed"}
+                  </dd>
+                </div>
+                <div className="rounded-xl bg-surface p-5">
+                  <dt className="text-xs tracking-widest text-muted uppercase">Site requirements</dt>
+                  <dd className="mt-2 text-sm font-medium text-white">Mounting surface, location, access, and installation</dd>
+                </div>
+              </dl>
             </div>
           </div>
           <aside className="h-fit rounded-2xl border border-border bg-surface p-6">
@@ -116,7 +130,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             </ul>
             <Button
               href={whatsappHref(
-                `Good day, AMAS Inter Designers. I am interested in a product similar to ${project.title}. Please provide the available pricing and specifications. Selected sample: ${new URL(`/portfolio/${project.slug}`, site.url).toString()}`,
+                `Good day, AMAS Inter Designers. I am interested in a product similar to ${project.title}. Please provide the available pricing and specifications. Selected sample: ${new URL(`/portfolio/${project.slug}`, site.url).toString()}\n\nProject details:\n- Required size: width x height${project.category === "Signage" ? " x depth where applicable" : ""}\n- Installation location: to be confirmed\n- Preferred materials, finish, and lighting: to be confirmed\n\nPlease let me know the measurements and other information required for an accurate price. Thank you.`,
               )}
               external
               className="mt-8 w-full"
