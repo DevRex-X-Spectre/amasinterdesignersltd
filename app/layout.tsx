@@ -7,7 +7,6 @@ import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { JsonLd } from "@/components/layout/JsonLd";
 import { IconProvider } from "@/components/icons/IconProvider";
-import { Cursor } from "@/components/motion/Cursor";
 import { Intro } from "@/components/motion/Intro";
 import { site } from "@/data/site";
 
@@ -66,7 +65,6 @@ export default function RootLayout({
         </a>
         <IconProvider>
           <Intro />
-          <Cursor />
           <SmoothScroll>
             <Navbar />
             <main id="main" className="flex-1 pb-24">

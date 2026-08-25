@@ -8,7 +8,6 @@ export function JsonLd() {
     description: site.description,
     url: site.url,
     telephone: site.contact.isPlaceholder ? undefined : site.contact.phone,
-    email: site.contact.isPlaceholder ? undefined : site.contact.email,
     address: site.contact.isPlaceholder
       ? undefined
       : {

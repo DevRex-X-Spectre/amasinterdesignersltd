@@ -11,6 +11,7 @@ import { Container } from "@/components/shared/Container";
 import { Button } from "@/components/shared/Button";
 import { ImageCard } from "@/components/shared/ImageCard";
 import { FinalCTA } from "@/components/home/FinalCTA";
+import { whatsappHref } from "@/data/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -89,8 +90,14 @@ export default async function ProjectDetailPage({ params }: Props) {
                 return <li key={serviceSlug}>{service?.title ?? serviceSlug}</li>;
               })}
             </ul>
-            <Button href="/quote" className="mt-8 w-full">
-              Request a similar project
+            <Button
+              href={whatsappHref(
+                `Hello AMAS Inter Designers, I would like a similar product to ${project.title}. Product image: ${new URL(project.image, "https://www.amasinterdesigners.com").toString()}`,
+              )}
+              external
+              className="mt-8 w-full"
+            >
+              Request Similar Pricing
             </Button>
           </aside>
         </Container>

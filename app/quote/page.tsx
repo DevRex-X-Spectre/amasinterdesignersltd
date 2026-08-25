@@ -4,9 +4,9 @@ import { Container } from "@/components/shared/Container";
 import { QuoteForm } from "@/components/forms/QuoteForm";
 
 export const metadata: Metadata = {
-  title: "Request a Quote",
+  title: "Request Pricing",
   description:
-    "Request a quote from AMAS Inter Designers Ltd. for signage, branding, printing, or fabrication.",
+    "Request pricing from AMAS Inter Designers Ltd. for signage, branding, printing, or fabrication.",
 };
 
 export default function QuotePage() {
@@ -15,7 +15,7 @@ export default function QuotePage() {
       <PageHero
         eyebrow="Quote"
         title="Tell us about the job"
-        description="Required fields are marked. Fill this in and we will take it from there. The form is ready to connect to a backend when that is set up."
+        description="Required fields are marked. Fill this in and your request will open in WhatsApp for the company consultant."
       />
       <section className="bg-background py-20">
         <Container className="max-w-4xl">

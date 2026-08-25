@@ -10,6 +10,7 @@ import { Button } from "@/components/shared/Button";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { INTRO_COMPLETE_EVENT } from "@/components/motion/Intro";
 import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
+import { whatsappHref } from "@/data/site";
 
 function SplitLine({
   text,
@@ -226,8 +227,12 @@ export function Hero() {
         </div>
         <div className="hero-text flex flex-col items-center gap-4 sm:flex-row">
           <Magnetic>
-            <Button href="/quote" className="btn-shine group">
-              Request a Quote
+            <Button
+              href={whatsappHref("Hello AMAS Inter Designers, I would like to request pricing.")}
+              external
+              className="btn-shine group"
+            >
+              Request Pricing
               <Icon
                 icon="solar:arrow-right-linear"
                 className="ml-2 text-xl transition-transform group-hover:translate-x-1"

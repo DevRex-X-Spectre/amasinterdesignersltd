@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/shared/PageHero";
 import { Container } from "@/components/shared/Container";
-import { ContactForm } from "@/components/forms/ContactForm";
 import { ContactDetails } from "@/components/contact/ContactDetails";
+import { LocationMap } from "@/components/contact/LocationMap";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Contact AMAS Inter Designers Ltd. Phone, email, and address will be published here when confirmed.",
+    "Reach AMAS Inter Designers Ltd. directly through WhatsApp, phone, and social channels.",
 };
 
 export default function ContactPage() {
@@ -16,24 +16,25 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Get in touch"
-        description="Phone, email, address, and hours will sit here as soon as they are confirmed. You can still leave a message."
+        description="The fastest way to reach us is WhatsApp. You can also call or connect with us on social media."
       />
       <section className="bg-background py-20">
-        <Container className="grid grid-cols-1 gap-16 lg:grid-cols-2">
+        <Container className="grid grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
-            <ContactDetails />
-            <div className="mt-12 flex min-h-[240px] items-center justify-center rounded-2xl border border-dashed border-border bg-surface text-center">
-              <p className="max-w-xs px-6 text-sm font-light text-muted">
-                A map will sit here once the address is confirmed.
-              </p>
-            </div>
+            <span className="mb-4 block text-sm font-medium tracking-widest text-accent uppercase">Direct contact</span>
+            <h2 className="font-display max-w-md text-3xl font-semibold tracking-tight md:text-4xl">Choose the channel that works for you.</h2>
+            <p className="mt-6 max-w-md text-sm leading-relaxed font-light text-muted">Tell the consultant what you need, share a reference image on WhatsApp, or call for a quick conversation about your project.</p>
           </div>
-          <div className="rounded-2xl border border-border bg-surface p-8">
-            <h2 className="font-display mb-6 text-2xl font-semibold tracking-tight">
-              Send a message
-            </h2>
-            <ContactForm />
+          <ContactDetails />
+        </Container>
+      </section>
+      <section className="border-t border-border bg-surface py-20">
+        <Container>
+          <div className="mb-8">
+            <span className="mb-3 block text-sm font-medium tracking-widest text-accent uppercase">Our location</span>
+            <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">Visit AMAS in Jos.</h2>
           </div>
+          <LocationMap />
         </Container>
       </section>
     </>

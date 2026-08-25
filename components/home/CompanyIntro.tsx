@@ -31,7 +31,7 @@ export function CompanyIntro() {
         <ClipImage className="group relative order-2 rounded-2xl md:order-1">
           <div className="absolute inset-0 z-10 bg-accent/10 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
           <Image
-            src="/assets/IMG-20260820-WA0067.jpg"
+            src="/assets/salvation-ministries-globe-sign.jpg"
             alt="Large identity sign fabricated by AMAS Inter Designers"
             width={900}
             height={1200}

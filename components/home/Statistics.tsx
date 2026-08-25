@@ -8,11 +8,11 @@ export function Statistics() {
       <Container>
         <Reveal className="mb-12 text-center">
           <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
-            A few numbers, coming soon
+            Built on family experience
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm font-light text-muted">
-            We would rather leave these blank than put a figure up that we have
-            not confirmed.
+            From a family business established in the 1990s to an officially
+            registered company continuing under the same name since 2011.
           </p>
         </Reveal>
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:divide-x md:divide-border">

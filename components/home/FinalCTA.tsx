@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import { Button } from "@/components/shared/Button";
+import { whatsappHref } from "@/data/site";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { Reveal } from "@/components/motion/Reveal";
 
@@ -19,8 +20,13 @@ export function FinalCTA() {
         </p>
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Magnetic>
-            <Button href="/quote" variant="white" className="w-full sm:w-auto">
-              Request a Quote
+            <Button
+              href={whatsappHref("Hello AMAS Inter Designers, I would like to request pricing.")}
+              external
+              variant="white"
+              className="w-full sm:w-auto"
+            >
+              Request Pricing
             </Button>
           </Magnetic>
           <Magnetic>

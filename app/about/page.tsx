@@ -7,6 +7,7 @@ import { Button } from "@/components/shared/Button";
 import { CheckList } from "@/components/shared/CheckList";
 import { Reveal } from "@/components/motion/Reveal";
 import { FinalCTA } from "@/components/home/FinalCTA";
+import { LocationMap } from "@/components/contact/LocationMap";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -26,7 +27,7 @@ export default function AboutPage() {
         <Container className="grid grid-cols-1 items-center gap-16 md:grid-cols-2">
           <Reveal>
             <Image
-              src="/assets/IMG-20260820-WA0082.jpg"
+              src="/assets/vochmal-foods-branding.jpg"
               alt="AMAS team installing window branding"
               width={900}
               height={1100}
@@ -42,6 +43,9 @@ export default function AboutPage() {
             </h2>
             <p className="text-sm leading-relaxed font-light text-muted">
               {about.story}
+            </p>
+            <p className="mt-6 text-sm leading-relaxed font-light text-muted">
+              {about.history}
             </p>
             <p className="mt-6 text-sm leading-relaxed font-light text-muted">
               {about.different}
@@ -104,12 +108,23 @@ export default function AboutPage() {
           </Reveal>
           <Reveal>
             <Image
-              src="/assets/IMG-20260820-WA0074.jpg"
+              src="/assets/oak-prime-school-pylon.jpg"
               alt="Oak-Prime school pylon fabricated by AMAS"
               width={900}
               height={1100}
               className="h-[480px] w-full rounded-2xl object-cover"
             />
+          </Reveal>
+        </Container>
+      </section>
+      <section className="border-t border-border bg-background py-24">
+        <Container>
+          <Reveal className="mb-10">
+            <span className="mb-3 block text-sm font-medium tracking-widest text-accent uppercase">Where we work</span>
+            <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">Find us in Jos.</h2>
+          </Reveal>
+          <Reveal>
+            <LocationMap />
           </Reveal>
         </Container>
       </section>

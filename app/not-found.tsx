@@ -1,4 +1,5 @@
 import { Button } from "@/components/shared/Button";
+import { whatsappHref } from "@/data/site";
 
 export default function NotFound() {
   return (
@@ -21,8 +22,12 @@ export default function NotFound() {
           <Button href="/" variant="white">
             Back home
           </Button>
-          <Button href="/quote" variant="outline">
-            Request a Quote
+          <Button
+            href={whatsappHref("Hello AMAS Inter Designers, I need help finding a page on your website.")}
+            external
+            variant="outline"
+          >
+            Request Pricing
           </Button>
         </div>
       </div>

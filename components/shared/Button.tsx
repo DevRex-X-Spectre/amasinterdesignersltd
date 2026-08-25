@@ -27,7 +27,7 @@ export function Button({
 }: ButtonProps) {
   const classes = `btn-shine inline-flex items-center justify-center px-8 py-4 text-sm font-medium transition-all duration-300 hover:tracking-wide ${variants[variant]} ${className}`.trim();
 
-  if (external) {
+  if (external || href.startsWith("https://wa.me/")) {
     return (
       <a href={href} className={classes} target="_blank" rel="noopener noreferrer">
         {children}

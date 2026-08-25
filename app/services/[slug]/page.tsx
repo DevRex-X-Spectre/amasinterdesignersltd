@@ -15,6 +15,7 @@ import { CheckList } from "@/components/shared/CheckList";
 import { ImageCard } from "@/components/shared/ImageCard";
 import { FaqList } from "@/components/shared/FaqList";
 import { FinalCTA } from "@/components/home/FinalCTA";
+import { whatsappHref } from "@/data/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -71,8 +72,12 @@ export default async function ServiceDetailPage({ params }: Props) {
               What this usually includes
             </h2>
             <CheckList items={service.includes} columns={1} />
-            <Button href="/quote" className="mt-10">
-              Request a Quote
+            <Button
+              href={whatsappHref(`Hello AMAS Inter Designers, I am interested in your ${service.title} service.`)}
+              external
+              className="mt-10"
+            >
+              Request Pricing
             </Button>
           </div>
           <Image

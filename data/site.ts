@@ -13,21 +13,30 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.amasinterdesigners.com",
   locale: "en_NG",
   contact: {
-    phone: "Phone coming soon",
-    phoneHref: undefined as string | undefined,
-    email: "Email coming soon",
-    emailHref: undefined as string | undefined,
-    address: "Address coming soon",
-    hours: "Hours coming soon",
-    whatsappHref: undefined as string | undefined,
-    isPlaceholder: true,
+    phone: "0813 315 3568",
+    phoneHref: "tel:+2348133153568",
+    address: "AMAS Inter Designers Limited, VVQG+8QJ, Jos 930104, Plateau",
+    latitude: 9.8886712,
+    longitude: 8.8769014,
+    coordinates: "9.8886712° N, 8.8769014° E",
+    mapsHref:
+      "https://www.google.com/maps/place/AMAS+Inter+Designers+Limited/@9.8886712,8.8769014,17z",
+    hours: "8:00 AM - 6:00 PM, Monday - Saturday",
+    whatsappHref: "https://wa.me/2348133153568",
+    isPlaceholder: false,
   },
   social: {
     x: { href: undefined as string | undefined, label: "X" },
     facebook: { href: undefined as string | undefined, label: "Facebook" },
     instagram: { href: undefined as string | undefined, label: "Instagram" },
+    tiktok: { href: undefined as string | undefined, label: "TikTok" },
   },
 } as const;
+
+export function whatsappHref(message?: string) {
+  const base = site.contact.whatsappHref;
+  return message ? `${base}?text=${encodeURIComponent(message)}` : base;
+}
 
 export const navLinks = [
   { href: "/", label: "Home" },
@@ -43,7 +52,7 @@ export const footerQuickLinks = [
   { href: "/about", label: "About Us" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/quote", label: "Request a Quote" },
+  { href: "/quote", label: "Request Pricing" },
   { href: "/contact", label: "Contact Us" },
   { href: "/faq", label: "FAQ" },
 ] as const;

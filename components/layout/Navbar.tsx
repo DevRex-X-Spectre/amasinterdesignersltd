@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navLinks } from "@/data/site";
+import { whatsappHref } from "@/data/site";
 import { Wordmark } from "@/components/shared/Wordmark";
 
 export function Navbar() {
@@ -58,10 +59,12 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="/quote"
+            href={whatsappHref("Hello AMAS Inter Designers, I would like to request pricing.")}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover sm:inline-flex"
           >
-            Request a Quote
+            Request Pricing
           </Link>
           <button
             type="button"
@@ -96,11 +99,13 @@ export function Navbar() {
               </Link>
             ))}
             <Link
-              href="/quote"
+              href={whatsappHref("Hello AMAS Inter Designers, I would like to request pricing.")}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={close}
               className="mt-4 inline-flex items-center justify-center bg-accent px-8 py-4 text-sm font-medium text-white"
             >
-              Request a Quote
+              Request Pricing
             </Link>
           </div>
         </div>

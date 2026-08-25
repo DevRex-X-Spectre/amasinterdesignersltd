@@ -2,8 +2,9 @@
 
 import { useState, type FormEvent } from "react";
 import { services } from "@/data/services";
+import { whatsappHref } from "@/data/site";
 
-const contactMethods = ["Phone", "Email", "WhatsApp"] as const;
+const contactMethods = ["Phone", "WhatsApp"] as const;
 const budgetRanges = [
   "Not sure yet",
   "Under ₦250,000",
@@ -21,15 +22,11 @@ export function QuoteForm() {
   function validate(form: FormData): Errors {
     const next: Errors = {};
     const name = String(form.get("fullName") ?? "").trim();
-    const email = String(form.get("email") ?? "").trim();
     const phone = String(form.get("phone") ?? "").trim();
     const service = String(form.get("service") ?? "").trim();
     const description = String(form.get("description") ?? "").trim();
 
     if (!name) next.fullName = "Enter your full name.";
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      next.email = "Enter a valid email address.";
-    }
     if (!phone) next.phone = "Enter a phone number.";
     if (!service) next.service = "Select a service.";
     if (description.length < 20) {
@@ -44,6 +41,26 @@ export function QuoteForm() {
     const next = validate(form);
     setErrors(next);
     if (Object.keys(next).length === 0) {
+      const fileEntry = form.get("file");
+      const referenceFile = fileEntry instanceof File && fileEntry.name
+        ? fileEntry.name
+        : "Not provided";
+      const details = [
+        "Hello AMAS Inter Designers, I would like to request pricing.",
+        `Name: ${form.get("fullName")}`,
+        `Company: ${form.get("company") || "Not provided"}`,
+        `Phone: ${form.get("phone")}`,
+        `Preferred contact: ${form.get("contactMethod")}`,
+        `Service: ${form.get("service")}`,
+        `Project title: ${form.get("projectTitle") || "Not provided"}`,
+        `Location: ${form.get("location") || "Not provided"}`,
+        `Dimensions: ${form.get("dimensions") || "Not provided"}`,
+        `Completion date: ${form.get("date") || "Not provided"}`,
+        `Budget: ${form.get("budget")}`,
+        `Reference file: ${referenceFile}`,
+        `Description: ${form.get("description")}`,
+      ].join("\n");
+      window.open(whatsappHref(details), "_blank", "noopener,noreferrer");
       setSuccess(true);
     }
   }
@@ -55,8 +72,8 @@ export function QuoteForm() {
           We have the details
         </h2>
         <p className="mx-auto mt-4 max-w-md text-sm font-light text-muted">
-          The form is not connected to a backend yet, so this stayed in your
-          browser. Once contact channels are live, this will go through to us.
+          Your request has been prepared for WhatsApp. Send the message there so
+          the company consultant can respond directly.
         </p>
       </div>
     );
@@ -76,15 +93,6 @@ export function QuoteForm() {
         </Field>
         <Field id="company" label="Company Name">
           <input id="company" name="company" className={inputClass} />
-        </Field>
-        <Field
-          id="email"
-          label="Email Address"
-          required
-          error={errors.email}
-          description="We will use this if email is your preferred contact method."
-        >
-          <input id="email" name="email" type="email" className={inputClass} />
         </Field>
         <Field id="phone" label="Phone Number" required error={errors.phone}>
           <input id="phone" name="phone" type="tel" className={inputClass} />

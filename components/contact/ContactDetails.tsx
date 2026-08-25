@@ -1,42 +1,29 @@
 "use client";
 
 import { Icon } from "@iconify/react";
-import { site } from "@/data/site";
+import { site, whatsappHref } from "@/data/site";
 import { SocialLinks } from "@/components/shared/SocialLinks";
-
-const details = [
-  { icon: "solar:phone-linear", label: "Phone", value: site.contact.phone },
-  { icon: "solar:letter-linear", label: "Email", value: site.contact.email },
-  { icon: "solar:map-point-linear", label: "Address", value: site.contact.address },
-  { icon: "solar:clock-circle-linear", label: "Hours", value: site.contact.hours },
-];
 
 export function ContactDetails() {
   return (
-    <div>
-      <h2 className="font-display mb-8 text-2xl font-semibold tracking-tight">
-        Details
-      </h2>
-      <ul className="space-y-6">
-        {details.map((item) => (
-          <li key={item.label} className="flex gap-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface">
-              <Icon icon={item.icon} className="text-xl" />
-            </div>
-            <div>
-              <div className="text-xs tracking-widest text-muted uppercase">
-                {item.label}
-              </div>
-              <div className="mt-1 text-sm">{item.value}</div>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <div className="mt-10">
-        <div className="mb-3 text-xs tracking-widest text-muted uppercase">
-          Social
+    <div className="space-y-4">
+      <a href={whatsappHref("Hello AMAS Inter Designers, I would like to get in touch.")} target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between border border-[#25D366]/40 bg-[#25D366]/10 p-5 transition-colors hover:border-[#25D366]">
+        <div className="flex items-center gap-4">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#25D366] text-white"><Icon icon="simple-icons:whatsapp" className="text-xl" /></div>
+          <div><div className="text-xs tracking-widest text-muted uppercase">WhatsApp Consultant</div><div className="mt-1 text-lg font-medium">{site.contact.phone}</div></div>
         </div>
-        <SocialLinks />
+        <Icon icon="solar:arrow-right-up-linear" className="text-xl text-[#25D366] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+      </a>
+      <a href={site.contact.phoneHref} className="group flex items-center justify-between border border-border bg-surface p-5 transition-colors hover:border-white/40">
+        <div className="flex items-center gap-4">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-white"><Icon icon="solar:phone-linear" className="text-xl" /></div>
+          <div><div className="text-xs tracking-widest text-muted uppercase">Call the company</div><div className="mt-1 text-lg font-medium">{site.contact.phone}</div></div>
+        </div>
+        <Icon icon="solar:arrow-right-up-linear" className="text-xl text-accent transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+      </a>
+      <div className="border-t border-border pt-8">
+        <div className="mb-3 text-xs tracking-widest text-muted uppercase">Social channels</div>
+        <SocialLinks iconClassName="text-2xl" />
       </div>
     </div>
   );

@@ -4,7 +4,9 @@ export const about = {
   intro:
     "AMAS Inter Designers Ltd. designs, builds, and installs signs, branding, print, and outdoor work for shops, hotels, schools, offices, and public sites.",
   story:
-    "Most jobs start the same way. Someone needs a name on a building, a board by the road, or a logo on the wall. We look at the site, agree the look, then make it in the workshop and put it up.",
+    "AMAS Inter Designers is a family-owned business that has been part of the industry since the 1990s. It was established and operated by the founder's father before being handed over to the next generation to continue the family business.",
+  history:
+    "Although the business has been operating for many years, it was officially registered in 2011 and has continued under the AMAS Inter Designers name ever since. Today, that family history continues through the same hands-on approach to design, making, and installation.",
   mission: {
     title: "What we are here to do",
     body: "Make signs that look like the brand, sit true on the wall, and still look right a year later.",

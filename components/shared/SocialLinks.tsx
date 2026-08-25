@@ -4,7 +4,6 @@ import { Icon } from "@iconify/react";
 import { site } from "@/data/site";
 
 const items = [
-  { key: "x", icon: "simple-icons:x", href: site.social.x.href, label: "X" },
   {
     key: "facebook",
     icon: "simple-icons:facebook",
@@ -16,6 +15,12 @@ const items = [
     icon: "simple-icons:instagram",
     href: site.social.instagram.href,
     label: "Instagram",
+  },
+  {
+    key: "tiktok",
+    icon: "simple-icons:tiktok",
+    href: site.social.tiktok.href,
+    label: "TikTok",
   },
 ] as const;
 

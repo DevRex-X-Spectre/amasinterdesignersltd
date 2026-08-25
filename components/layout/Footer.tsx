@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { footerQuickLinks, site } from "@/data/site";
+import { footerQuickLinks, site, whatsappHref } from "@/data/site";
 import { services } from "@/data/services";
 import { SocialLinks } from "@/components/shared/SocialLinks";
 import { Wordmark } from "@/components/shared/Wordmark";
@@ -24,9 +24,20 @@ export function Footer() {
           <ul className="space-y-3 text-sm font-light text-muted">
             {footerQuickLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="transition-colors hover:text-white">
-                  {link.label}
-                </Link>
+                {link.href === "/quote" ? (
+                  <a
+                    href={whatsappHref("Hello AMAS Inter Designers, I would like to request pricing.")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link href={link.href} className="transition-colors hover:text-white">
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -59,7 +70,6 @@ export function Footer() {
           </h4>
           <ul className="space-y-3 text-sm font-light text-muted">
             <li>{site.contact.phone}</li>
-            <li>{site.contact.email}</li>
             <li>{site.contact.address}</li>
             <li>{site.contact.hours}</li>
           </ul>

@@ -1,22 +1,22 @@
 export const stats = [
   {
-    label: "Projects completed",
-    value: "Soon",
-    note: "We will add a real number here.",
+    label: "Years in the trade",
+    value: "30+",
+    note: "Family-owned since the 1990s",
   },
   {
-    label: "Clients",
-    value: "Soon",
-    note: "We will add a real number here.",
+    label: "Generations",
+    value: "2",
+    note: "A family business passed down",
   },
   {
-    label: "Years in the work",
-    value: "Soon",
-    note: "We will add a real number here.",
+    label: "Registered",
+    value: "2011",
+    note: "Officially registered under the company name",
   },
   {
-    label: "Cities we work in",
-    value: "Soon",
-    note: "We will add a real number here.",
+    label: "Years registered",
+    value: "15",
+    note: "Approximate as of 2026",
   },
 ] as const;
