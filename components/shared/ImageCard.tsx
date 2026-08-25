@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@iconify/react";
+import { Icon } from "@/components/icons/Icon";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,9 +24,9 @@ export function ImageCard({
   return (
     <Link
       href={href}
-      className="group flex cursor-pointer flex-col rounded-2xl border border-border bg-surface p-4 transition-all duration-500 hover:-translate-y-1.5 hover:border-white/20 hover:shadow-[0_24px_60px_rgba(0,0,0,0.45)]"
+      className="image-card-3d group relative flex cursor-pointer flex-col rounded-2xl bg-gradient-to-br from-[#142e63] via-surface to-[#071a3d] p-4 transition-all duration-500"
     >
-      <div className="relative mb-4 flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl bg-background">
+      <div className="relative z-10 mb-4 flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl bg-background shadow-[0_10px_20px_rgba(0,0,0,0.34)] [transform:translateZ(18px)]">
         <span className="absolute top-3 left-3 z-10 rounded border border-border bg-background/80 px-2 py-1 text-xs text-muted backdrop-blur">
           {category}
         </span>
@@ -43,7 +43,7 @@ export function ImageCard({
           <Icon icon="solar:arrow-right-linear" />
         </span>
       </div>
-      <div className="mt-auto">
+      <div className="relative z-10 mt-auto [transform:translateZ(8px)]">
         <div className="font-display mb-1 text-xs tracking-widest text-muted uppercase">
           {category}
         </div>

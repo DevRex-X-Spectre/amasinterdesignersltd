@@ -169,6 +169,43 @@ body {
   overflow: hidden;
 }
 
+.image-card-3d {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  will-change: transform;
+  box-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.06) inset,
+    0 4px 8px rgba(0, 0, 0, 0.16),
+    0 16px 30px rgba(0, 0, 0, 0.24),
+    0 28px 48px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.image-card-3d::after {
+  position: absolute;
+  right: 12px;
+  bottom: -9px;
+  left: 12px;
+  z-index: -1;
+  height: 16px;
+  border-radius: 0 0 16px 16px;
+  background: linear-gradient(180deg, rgba(4, 18, 48, 0.85), rgba(1, 10, 29, 0));
+  content: "";
+  filter: blur(3px);
+  transform: translateZ(-8px);
+}
+
+.image-card-3d:hover {
+  transform: translateY(-9px) rotateX(1.5deg) rotateY(-1deg);
+  box-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.1) inset,
+    0 8px 14px rgba(0, 0, 0, 0.2),
+    0 24px 42px rgba(0, 0, 0, 0.34),
+    0 38px 58px rgba(0, 0, 0, 0.16);
+}
+
 .btn-shine::after {
   content: "";
   position: absolute;

@@ -20,5 +20,4 @@ export const clients: Client[] = [
   { name: "Golden Bide Hotel" },
   { name: "Jennys Fuel Station" },
   { name: "Stanel Bakery" },
-  { name: "And More….", isMore: true },
 ];

@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { Icon } from "@/components/icons/Icon";
 import { site } from "@/data/site";
 
 export function LocationMap() {

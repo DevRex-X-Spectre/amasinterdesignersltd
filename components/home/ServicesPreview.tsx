@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { Icon } from "@/components/icons/Icon";
 import Link from "next/link";
 import { featuredServices } from "@/data/services";
 import { Container } from "@/components/shared/Container";

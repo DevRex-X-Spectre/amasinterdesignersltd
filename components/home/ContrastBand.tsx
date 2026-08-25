@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { Icon } from "@/components/icons/Icon";
 import { Reveal } from "@/components/motion/Reveal";
 
 export function ContrastBand() {

@@ -73,7 +73,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             </h2>
             <CheckList items={service.includes} columns={1} />
             <Button
-              href={whatsappHref(`Hello AMAS Inter Designers, I am interested in your ${service.title} service.`)}
+              href={whatsappHref(`Good day, AMAS Inter Designers. I am interested in your ${service.title} service. Please share the details and pricing options available. Thank you.`)}
               external
               className="mt-10"
             >

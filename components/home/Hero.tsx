@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@iconify/react";
+import { Icon } from "@/components/icons/Icon";
 import Image from "next/image";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
@@ -228,7 +228,7 @@ export function Hero() {
         <div className="hero-text flex flex-col items-center gap-4 sm:flex-row">
           <Magnetic>
             <Button
-              href={whatsappHref("Hello AMAS Inter Designers, I would like to request pricing.")}
+              href={whatsappHref("Good day, AMAS Inter Designers. I would like to request pricing for a signage or branding project. Please let me know how I can provide the project details. Thank you.")}
               external
               className="btn-shine group"
             >

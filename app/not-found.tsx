@@ -23,7 +23,7 @@ export default function NotFound() {
             Back home
           </Button>
           <Button
-            href={whatsappHref("Hello AMAS Inter Designers, I need help finding a page on your website.")}
+            href={whatsappHref("Good day, AMAS Inter Designers. I need assistance finding information on your website. Please point me in the right direction. Thank you.")}
             external
             variant="outline"
           >

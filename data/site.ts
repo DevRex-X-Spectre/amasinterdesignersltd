@@ -13,8 +13,8 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.amasinterdesigners.com",
   locale: "en_NG",
   contact: {
-    phone: "0813 315 3568",
-    phoneHref: "tel:+2348133153568",
+    phone: "+234 906 048 8721",
+    phoneHref: "tel:+2349060488721",
     address: "AMAS Inter Designers Limited, VVQG+8QJ, Jos 930104, Plateau",
     latitude: 9.8886712,
     longitude: 8.8769014,
@@ -22,14 +22,23 @@ export const site = {
     mapsHref:
       "https://www.google.com/maps/place/AMAS+Inter+Designers+Limited/@9.8886712,8.8769014,17z",
     hours: "8:00 AM - 6:00 PM, Monday - Saturday",
-    whatsappHref: "https://wa.me/2348133153568",
+    whatsappHref: "https://wa.me/2349060488721",
     isPlaceholder: false,
   },
   social: {
     x: { href: undefined as string | undefined, label: "X" },
-    facebook: { href: undefined as string | undefined, label: "Facebook" },
-    instagram: { href: undefined as string | undefined, label: "Instagram" },
-    tiktok: { href: undefined as string | undefined, label: "TikTok" },
+    facebook: {
+      href: "https://www.facebook.com/share/1JuCvAhR3T/",
+      label: "Facebook",
+    },
+    instagram: {
+      href: "https://www.instagram.com/amas_inter_designers_ltd?igsi=dzBhdHlreHEwYWs0",
+      label: "Instagram",
+    },
+    tiktok: {
+      href: "https://www.tiktok.com/@amas_designers?_r=1&_t=ZS-99B7jro307w",
+      label: "TikTok",
+    },
   },
 } as const;
 

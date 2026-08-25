@@ -26,7 +26,7 @@ export function Footer() {
               <li key={link.href}>
                 {link.href === "/quote" ? (
                   <a
-                    href={whatsappHref("Hello AMAS Inter Designers, I would like to request pricing.")}
+                    href={whatsappHref("Good day, AMAS Inter Designers. I would like to request pricing for a signage or branding project. Please let me know how I can provide the project details. Thank you.")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-colors hover:text-white"

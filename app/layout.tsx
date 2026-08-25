@@ -6,7 +6,6 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { JsonLd } from "@/components/layout/JsonLd";
-import { IconProvider } from "@/components/icons/IconProvider";
 import { Intro } from "@/components/motion/Intro";
 import { site } from "@/data/site";
 
@@ -37,11 +36,20 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: site.locale,
     type: "website",
+    images: [
+      {
+        url: "/assets/heroes-wall-of-fame.jpg",
+        width: 1200,
+        height: 800,
+        alt: "AMAS Inter Designers signage and fabrication work",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: site.name,
     description: site.description,
+    images: ["/assets/heroes-wall-of-fame.jpg"],
   },
 };
 
@@ -63,17 +71,15 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <IconProvider>
-          <Intro />
-          <SmoothScroll>
+        <Intro />
+        <SmoothScroll>
             <Navbar />
             <main id="main" className="flex-1 pb-24">
               {children}
             </main>
             <Footer />
             <WhatsAppButton />
-          </SmoothScroll>
-        </IconProvider>
+        </SmoothScroll>
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { Icon } from "@/components/icons/Icon";
 import Image from "next/image";
 import { Container } from "@/components/shared/Container";
 import { Button } from "@/components/shared/Button";

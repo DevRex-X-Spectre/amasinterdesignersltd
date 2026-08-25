@@ -46,7 +46,7 @@ export function QuoteForm() {
         ? fileEntry.name
         : "Not provided";
       const details = [
-        "Hello AMAS Inter Designers, I would like to request pricing.",
+        "Good day, AMAS Inter Designers. I would like to request pricing for a signage or branding project. Please let me know the information required to prepare an estimate. Thank you.",
         `Name: ${form.get("fullName")}`,
         `Company: ${form.get("company") || "Not provided"}`,
         `Phone: ${form.get("phone")}`,

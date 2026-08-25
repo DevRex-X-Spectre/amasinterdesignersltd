@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@iconify/react";
+import { Icon } from "@/components/icons/Icon";
 import Image from "next/image";
 import { useEffect } from "react";
 import type { GalleryItem } from "@/data/gallery";

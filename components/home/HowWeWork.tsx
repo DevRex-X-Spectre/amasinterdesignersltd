@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { Icon } from "@/components/icons/Icon";
 import { processSteps } from "@/data/process";
 import { Container } from "@/components/shared/Container";
 import { Reveal } from "@/components/motion/Reveal";

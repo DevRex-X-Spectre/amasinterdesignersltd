@@ -1,24 +1,31 @@
 "use client";
 
-import { Icon } from "@iconify/react";
+import {
+  SiFacebook,
+  SiInstagram,
+  SiTiktok,
+} from "@icons-pack/react-simple-icons";
 import { site } from "@/data/site";
+
+const brandIcons = {
+  facebook: SiFacebook,
+  instagram: SiInstagram,
+  tiktok: SiTiktok,
+} as const;
 
 const items = [
   {
     key: "facebook",
-    icon: "simple-icons:facebook",
     href: site.social.facebook.href,
     label: "Facebook",
   },
   {
     key: "instagram",
-    icon: "simple-icons:instagram",
     href: site.social.instagram.href,
     label: "Instagram",
   },
   {
     key: "tiktok",
-    icon: "simple-icons:tiktok",
     href: site.social.tiktok.href,
     label: "TikTok",
   },
@@ -36,30 +43,22 @@ export function SocialLinks({
   return (
     <div className={`flex items-center gap-4 ${className}`.trim()}>
       {items.map((item) => {
-        const classes = `text-muted transition-colors hover:text-white ${iconClassName}`.trim();
-        if (!item.href) {
-          return (
-            <span
-              key={item.key}
-              className={`${classes} cursor-not-allowed opacity-50`}
-              title={`${item.label} URL coming soon`}
-              aria-disabled="true"
-            >
-              <Icon icon={item.icon} aria-hidden />
-              <span className="sr-only">{item.label} (link coming soon)</span>
-            </span>
-          );
-        }
+        const BrandIcon = brandIcons[item.key];
+        const hoverColor = {
+          facebook: "hover:border-[#1877F2] hover:bg-[#1877F2]/10 hover:text-[#4f9cff]",
+          instagram: "hover:border-[#E4405F] hover:bg-[#E4405F]/10 hover:text-[#ff6b85]",
+          tiktok: "hover:border-[#25F4EE] hover:bg-[#25F4EE]/10 hover:text-[#25F4EE]",
+        }[item.key];
         return (
           <a
             key={item.key}
             href={item.href}
-            className={classes}
+            className={`group flex h-11 w-11 items-center justify-center rounded-full text-muted transition-[transform,color,background-color] duration-300 hover:-translate-y-1 hover:scale-110 hover:rotate-3 focus-visible:-translate-y-1 focus-visible:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${hoverColor}`}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={item.label}
           >
-            <Icon icon={item.icon} aria-hidden />
+            <BrandIcon aria-hidden className={`transition-transform duration-300 group-hover:scale-110 ${iconClassName}`} />
           </a>
         );
       })}

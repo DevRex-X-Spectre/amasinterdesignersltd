@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { Icon } from "@/components/icons/Icon";
 import { whyChoose } from "@/data/why-choose";
 import { Container } from "@/components/shared/Container";
 import { Reveal } from "@/components/motion/Reveal";

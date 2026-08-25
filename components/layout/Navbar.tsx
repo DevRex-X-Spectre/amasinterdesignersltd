@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@iconify/react";
+import { Icon } from "@/components/icons/Icon";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -59,7 +59,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <Link
-            href={whatsappHref("Hello AMAS Inter Designers, I would like to request pricing.")}
+            href={whatsappHref("Good day, AMAS Inter Designers. I would like to request pricing for a signage or branding project. Please let me know how I can provide the project details. Thank you.")}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden bg-accent px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover sm:inline-flex"
@@ -99,7 +99,7 @@ export function Navbar() {
               </Link>
             ))}
             <Link
-              href={whatsappHref("Hello AMAS Inter Designers, I would like to request pricing.")}
+              href={whatsappHref("Good day, AMAS Inter Designers. I would like to request pricing for a signage or branding project. Please let me know how I can provide the project details. Thank you.")}
               target="_blank"
               rel="noopener noreferrer"
               onClick={close}

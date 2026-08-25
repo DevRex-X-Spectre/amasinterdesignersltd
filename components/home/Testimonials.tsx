@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@iconify/react";
+import { Icon } from "@/components/icons/Icon";
 import { useEffect, useState } from "react";
 import { testimonials } from "@/data/testimonials";
 import { Reveal } from "@/components/motion/Reveal";
@@ -42,20 +42,24 @@ export function Testimonials() {
   };
 
   const card = (item: (typeof testimonials)[number], className = "") => (
-    <div className={`flex h-full flex-col rounded-2xl border border-border bg-surface p-6 ${className}`.trim()}>
-      <div className="mb-4 flex text-accent" aria-label="5 out of 5 stars">
+    <article className={`relative flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-surface via-surface to-background p-7 shadow-[0_16px_40px_rgba(0,0,0,0.18)] ${className}`.trim()}>
+      <div className="absolute top-0 left-7 h-1 w-16 bg-accent" />
+      <div className="mb-5 flex items-start justify-between">
+        <div className="flex gap-0.5 text-accent [&_svg]:fill-current" aria-label="5 out of 5 stars">
         {Array.from({ length: 5 }).map((_, star) => (
-          <Icon key={star} icon="solar:star-bold" className="text-sm" aria-hidden />
+            <Icon key={star} icon="solar:star-bold" className="text-[0.9rem]" aria-hidden />
         ))}
+        </div>
+        <span aria-hidden className="font-display text-5xl leading-[0.6] font-semibold text-accent/25">“</span>
       </div>
-      <p className="mb-6 text-sm leading-relaxed font-light text-muted">
+      <p className="mb-8 max-w-[34ch] text-sm leading-7 font-light text-white/80">
         “{item.quote}”
       </p>
       <div className="mt-auto">
-        <p className="text-sm font-medium">{item.name}</p>
-        <p className="text-xs text-muted">{item.company}</p>
+        <p className="font-display text-sm font-semibold tracking-tight text-white">{item.name}</p>
+        <p className="mt-1 text-xs tracking-wide text-accent/80 uppercase">{item.company}</p>
       </div>
-    </div>
+    </article>
   );
 
   return (
@@ -72,7 +76,7 @@ export function Testimonials() {
           <div className="hidden md:block">
             <Marquee>
               {loop.map((item, index) => (
-                <div key={`${item.name}-${index}`} className="inline-flex h-[260px] w-[350px] shrink-0">
+                <div key={`${item.name}-${index}`} className="inline-flex h-[280px] w-[390px] shrink-0 px-2">
                   {card(item)}
                 </div>
               ))}
@@ -83,14 +87,14 @@ export function Testimonials() {
             onTouchStart={(event) => setTouchStart(event.touches[0].clientX)}
             onTouchEnd={(event) => handleTouchEnd(event.changedTouches[0].clientX)}
           >
-            <div className="relative mx-auto h-[330px] max-w-sm overflow-hidden px-3 [perspective:1100px]">
+            <div className="relative mx-auto h-[340px] max-w-sm overflow-hidden px-3 [perspective:1100px]">
               {[-2, -1, 0, 1, 2].map((offset) => {
                 const item = testimonials[(active + offset + testimonials.length) % testimonials.length];
                 const distance = Math.abs(offset);
                 return (
                   <div
                     key={`${item.name}-${offset}`}
-                    className={`absolute inset-x-3 top-0 h-[300px] origin-bottom transition-all duration-700 ease-out ${offset === 0 ? (direction === 1 ? "animate-testimonial-in-right" : "animate-testimonial-in-left") : ""}`}
+                    className={`absolute inset-x-3 top-0 h-[310px] origin-bottom transition-all duration-700 ease-out ${offset === 0 ? (direction === 1 ? "animate-testimonial-in-right" : "animate-testimonial-in-left") : ""}`}
                     style={{
                       transform: `translateX(${offset * 12}px) translateY(${distance * 13}px) rotate(${offset * 1.4}deg) scale(${1 - distance * 0.045})`,
                       zIndex: 10 - distance,
