@@ -58,7 +58,7 @@ export default function AboutPage() {
           {[about.mission, about.vision].map((item) => (
             <Reveal
               key={item.title}
-              className="rounded-2xl border border-border bg-background p-8"
+              className="rounded-2xl bg-background p-8 shadow-[0_16px_36px_rgba(0,0,0,0.16)]"
             >
               <h3 className="font-display mb-4 text-2xl font-semibold tracking-tight">
                 {item.title}
@@ -84,7 +84,7 @@ export default function AboutPage() {
             {about.values.map((value) => (
               <Reveal
                 key={value.title}
-                className="rounded-2xl border border-border bg-surface p-6"
+                className="rounded-2xl bg-surface p-6 shadow-[0_16px_36px_rgba(0,0,0,0.16)]"
               >
                 <h3 className="font-display mb-3 text-lg font-medium">
                   {value.title}

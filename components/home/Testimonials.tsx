@@ -42,7 +42,7 @@ export function Testimonials() {
   };
 
   const card = (item: (typeof testimonials)[number], className = "") => (
-    <article className={`relative flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-surface via-surface to-background p-7 shadow-[0_16px_40px_rgba(0,0,0,0.18)] ${className}`.trim()}>
+    <article className={`relative flex h-full flex-col overflow-hidden rounded-xl bg-gradient-to-br from-surface via-surface to-background p-7 shadow-[0_16px_40px_rgba(0,0,0,0.22)] ${className}`.trim()}>
       <div className="absolute top-0 left-7 h-1 w-16 bg-accent" />
       <div className="mb-5 flex items-start justify-between">
         <div className="flex gap-0.5 text-accent [&_svg]:fill-current" aria-label="5 out of 5 stars">

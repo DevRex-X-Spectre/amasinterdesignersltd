@@ -21,7 +21,7 @@ export function HowWeWork() {
             <Reveal
               key={step.number}
               delay={index * 0.08}
-              className="group relative rounded-2xl border border-border bg-background/50 p-8 backdrop-blur transition-all duration-500 hover:-translate-y-2 hover:border-accent/40 hover:bg-background"
+              className="group relative rounded-2xl bg-background/50 p-8 shadow-[0_18px_38px_rgba(0,0,0,0.16)] backdrop-blur transition-all duration-500 hover:-translate-y-2 hover:bg-background"
             >
               <div
                 className={`absolute -top-4 -left-4 flex h-10 w-10 items-center justify-center rounded-lg font-display font-semibold text-white shadow-lg transition-colors duration-500 group-hover:bg-accent ${

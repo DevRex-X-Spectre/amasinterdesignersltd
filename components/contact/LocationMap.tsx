@@ -5,7 +5,7 @@ export function LocationMap() {
   const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(site.name)},${site.contact.latitude},${site.contact.longitude}&ll=${site.contact.latitude},${site.contact.longitude}&layer=s&t=k&z=18&output=embed`;
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-surface">
+    <div className="overflow-hidden rounded-2xl bg-surface shadow-[0_18px_40px_rgba(0,0,0,0.2)]">
       <div className="relative aspect-[16/9] min-h-[280px] w-full">
         <iframe
           title="AMAS Inter Designers Limited location map"

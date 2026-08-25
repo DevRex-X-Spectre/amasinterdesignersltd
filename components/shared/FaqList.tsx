@@ -11,7 +11,7 @@ export function FaqList({ items }: { items: Faq[] }) {
       {items.map((item, index) => {
         const expanded = open === index;
         return (
-          <div key={item.question} className="rounded-2xl border border-border bg-surface">
+          <div key={item.question} className="rounded-2xl bg-surface shadow-[0_14px_30px_rgba(0,0,0,0.14)]">
             <button
               type="button"
               className="flex w-full items-center justify-between px-6 py-5 text-left"

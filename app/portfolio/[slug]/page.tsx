@@ -118,7 +118,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               </dl>
             </div>
           </div>
-          <aside className="h-fit rounded-2xl border border-border bg-surface p-6">
+          <aside className="h-fit rounded-2xl bg-surface p-6 shadow-[0_16px_36px_rgba(0,0,0,0.16)]">
             <h3 className="font-display mb-4 text-sm tracking-wider uppercase">
               Work completed
             </h3>
