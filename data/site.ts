@@ -26,7 +26,6 @@ export const site = {
     isPlaceholder: false,
   },
   social: {
-    x: { href: undefined as string | undefined, label: "X" },
     facebook: {
       href: "https://www.facebook.com/share/1JuCvAhR3T/",
       label: "Facebook",
