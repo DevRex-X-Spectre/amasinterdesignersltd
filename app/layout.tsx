@@ -24,6 +24,9 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  alternates: {
+    canonical: site.url,
+  },
   title: {
     default: `${site.name} | Signage, Branding & Fabrication`,
     template: `%s | ${site.name}`,
