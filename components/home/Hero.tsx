@@ -204,26 +204,21 @@ export function Hero() {
 
       <div
         ref={textRef}
-        className="relative z-10 flex max-w-5xl flex-col items-center px-6 text-center"
+        className="relative z-10 flex max-w-5xl flex-col items-center px-5 text-center sm:px-6"
       >
-        <div className="mb-3 overflow-hidden">
-          <p className="hero-text text-xs font-medium tracking-[0.32em] text-accent uppercase">
-            AMAS Inter Designers
-          </p>
-        </div>
-        <div className="mb-3">
+        <div className="mb-2 sm:mb-3">
           <SplitLine
             text="Signs people notice."
-            className="font-display text-5xl leading-[1.05] font-semibold tracking-tight md:text-7xl"
+            className="font-display text-[2.65rem] leading-[1.08] font-semibold tracking-tight sm:text-5xl md:text-7xl"
           />
         </div>
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <SplitLine
             text="Made to go on the wall."
-            className="font-display text-5xl leading-[1.05] font-semibold tracking-tight text-muted md:text-7xl"
+            className="font-display text-[2.65rem] leading-[1.08] font-semibold tracking-tight text-muted sm:text-5xl md:text-7xl"
           />
         </div>
-        <div className="mb-10 overflow-hidden">
+        <div className="mb-8 overflow-hidden sm:mb-10">
           <p className="hero-text mx-auto max-w-xl text-base font-light text-muted md:text-lg">
             We design, build, and install signs, branding, and outdoor work for
             shops, hotels, schools, and public sites.

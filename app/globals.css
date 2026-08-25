@@ -2,30 +2,30 @@
 @import "lenis/dist/lenis.css";
 
 @theme inline {
-  --color-background: #0d0d0d;
-  --color-foreground: #ffffff;
-  --color-surface: #1a1d21;
-  --color-border: #2a2e34;
-  --color-muted: #b0b0b0;
-  --color-accent: #ff3c3c;
-  --color-accent-hover: #c62828;
-  --color-border-hover: #4a4e54;
+  --color-background: #021033;
+  --color-foreground: #f7f7f7;
+  --color-surface: #0b1d46;
+  --color-border: rgba(247, 247, 247, 0.18);
+  --color-muted: #dfe3ea;
+  --color-accent: #fd7402;
+  --color-accent-hover: #d96300;
+  --color-border-hover: #f7f7f7;
   --font-sans: var(--font-inter);
   --font-display: var(--font-montserrat);
 }
 
 html {
-  background: #0d0d0d;
+  background: #021033;
 }
 
 body {
-  background: #0d0d0d;
-  color: #ffffff;
+  background: #021033;
+  color: #f7f7f7;
   font-family: var(--font-inter), Inter, system-ui, sans-serif;
 }
 
 ::selection {
-  background: #ff3c3c;
+  background: #fd7402;
   color: #ffffff;
 }
 
@@ -34,20 +34,20 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0d0d0d;
+  background: #021033;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a2e34;
+  background: #fd7402;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #b0b0b0;
+  background: #d96300;
 }
 
 :focus-visible {
-  outline: 2px solid #ff3c3c;
+  outline: 2px solid #fd7402;
   outline-offset: 3px;
 }
 
@@ -171,14 +171,14 @@ body {
   width: 6px;
   height: 6px;
   margin: -3px 0 0 -3px;
-  background: #ff3c3c;
+  background: #fd7402;
 }
 
 .site-cursor-ring {
   width: 36px;
   height: 36px;
   margin: -18px 0 0 -18px;
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(247, 247, 247, 0.65);
   transition:
     width 0.25s ease,
     height 0.25s ease,
@@ -191,8 +191,8 @@ body {
   width: 64px;
   height: 64px;
   margin: -32px 0 0 -32px;
-  border-color: #ff3c3c;
-  background: rgba(255, 60, 60, 0.08);
+  border-color: #fd7402;
+  background: rgba(253, 116, 2, 0.08);
 }
 
 html.has-custom-cursor,
@@ -201,7 +201,7 @@ html.has-custom-cursor * {
 }
 
 .text-shimmer {
-  background: linear-gradient(90deg, #ffffff 0%, #ff3c3c 40%, #ffffff 80%);
+  background: linear-gradient(90deg, #f7f7f7 0%, #fd7402 40%, #f7f7f7 80%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;

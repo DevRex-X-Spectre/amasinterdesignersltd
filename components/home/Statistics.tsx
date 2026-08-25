@@ -7,9 +7,6 @@ export function Statistics() {
     <section className="border-y border-border bg-surface py-24">
       <Container>
         <Reveal className="mb-12 text-center">
-          <span className="mb-2 block text-sm font-medium tracking-widest text-accent uppercase">
-            In numbers
-          </span>
           <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
             A few numbers, coming soon
           </h2>

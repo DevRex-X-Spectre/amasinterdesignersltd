@@ -3,7 +3,8 @@ export const site = {
   legalName: "AMAS Inter Designers Ltd.",
   wordmark: {
     primary: "AMAS",
-    accent: "Inter",
+    accent: "INTER DESIGNERS LTD.",
+    tagline: "",
   },
   logo: "/assets/logo.png",
   tagline: "Signs, branding, and outdoor work, made and installed.",

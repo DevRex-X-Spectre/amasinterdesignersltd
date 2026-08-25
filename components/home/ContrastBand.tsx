@@ -17,7 +17,7 @@ export function ContrastBand() {
       </div>
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-6 md:grid-cols-2">
         <Reveal className="flex flex-col items-center rounded-2xl border border-border bg-background p-8 text-center transition-transform duration-500 hover:-translate-y-1">
-          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-red-950/30 text-accent">
+          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#fd7402]/12 text-accent">
             <Icon icon="solar:close-circle-linear" className="text-3xl" />
           </div>
           <h3 className="font-display mb-2 text-xl font-medium tracking-tight">
@@ -31,9 +31,9 @@ export function ContrastBand() {
             Rework, delay, mismatch
           </div>
         </Reveal>
-        <Reveal className="relative flex flex-col items-center overflow-hidden rounded-2xl border border-accent/30 bg-gradient-to-br from-surface to-background p-8 text-center shadow-[0_0_30px_rgba(255,60,60,0.05)] transition-transform duration-500 hover:-translate-y-1 hover:shadow-[0_0_50px_rgba(255,60,60,0.12)]">
+        <Reveal className="relative flex flex-col items-center overflow-hidden rounded-2xl border border-accent/30 bg-gradient-to-br from-surface to-background p-8 text-center shadow-[0_0_30px_rgba(253,116,2,0.08)] transition-transform duration-500 hover:-translate-y-1 hover:shadow-[0_0_50px_rgba(253,116,2,0.14)]">
           <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-transparent via-accent to-transparent" />
-          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-950/30 text-emerald-500">
+          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#fd7402]/12 text-[#fd7402]">
             <Icon icon="solar:check-read-linear" className="text-3xl" />
           </div>
           <h3 className="font-display mb-2 text-xl font-medium tracking-tight">

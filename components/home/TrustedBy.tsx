@@ -53,9 +53,6 @@ export function TrustedBy() {
     <section className="bg-background py-28">
       <Container>
         <Reveal className="mb-14 text-center">
-          <span className="mb-4 block text-xs font-medium tracking-[0.28em] text-accent uppercase">
-            Selected clients
-          </span>
           <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
             People we have built for
           </h2>

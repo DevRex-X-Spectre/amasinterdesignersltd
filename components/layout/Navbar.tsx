@@ -29,14 +29,14 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 z-50 w-full border-b border-border backdrop-blur-xl transition-all duration-300 ${
-        scrolled ? "bg-background/90" : "bg-background/70"
+      className={`fixed top-0 z-50 w-full border-b border-white/10 backdrop-blur-xl transition-all duration-300 ${
+        scrolled ? "bg-background/95" : "bg-background/90"
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+      <div className="mx-auto flex h-[72px] max-w-[1400px] items-center justify-between px-4 sm:h-[88px] sm:px-6 lg:px-8">
         <Wordmark priority />
 
-        <div className="hidden items-center gap-8 text-sm font-medium text-muted md:flex">
+        <div className="hidden items-center gap-7 text-sm font-medium text-white/90 md:flex lg:gap-8">
           {navLinks.map((link) => {
             const active =
               link.href === "/"

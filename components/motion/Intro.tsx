@@ -86,14 +86,26 @@ export function Intro() {
             <Image
               src={site.logo}
               alt=""
-              width={96}
-              height={96}
+              width={180}
+              height={180}
               priority
-              className="mb-6 h-20 w-20 object-contain md:h-24 md:w-24"
+              className="mb-4 h-32 w-32 rounded-full object-contain md:h-40 md:w-40"
             />
-            <div className="font-display text-4xl font-semibold tracking-[0.28em] uppercase md:text-6xl">
-              {site.wordmark.primary}
-              <span className="text-accent">{site.wordmark.accent}</span>
+
+            <div className="flex flex-col items-center text-center leading-none">
+              <div className="font-display text-4xl font-black tracking-[0.08em] text-white uppercase md:text-6xl">
+                {site.wordmark.primary}
+              </div>
+
+              <div className="mt-2 flex items-center gap-3 text-[0.56rem] font-semibold tracking-[0.22em] text-accent uppercase md:text-[0.72rem]">
+                <span className="h-px w-10 bg-accent md:w-12" />
+                <span>{site.wordmark.accent}</span>
+                <span className="h-px w-10 bg-accent md:w-12" />
+              </div>
+
+              <span className="mt-3 text-[0.5rem] font-medium tracking-[0.24em] text-white/90 uppercase md:text-[0.6rem]">
+                {site.wordmark.tagline}
+              </span>
             </div>
           </div>
           <div

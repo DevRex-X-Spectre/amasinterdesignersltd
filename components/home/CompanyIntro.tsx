@@ -35,7 +35,7 @@ export function CompanyIntro() {
             alt="Large identity sign fabricated by AMAS Inter Designers"
             width={900}
             height={1200}
-            className="h-[600px] w-full rounded-2xl object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
+            className="h-[600px] w-full rounded-2xl object-cover transition-transform duration-700 group-hover:scale-[1.02]"
           />
         </ClipImage>
         <div className="order-1 flex flex-col justify-center md:order-2">
