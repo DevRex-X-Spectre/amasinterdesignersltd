@@ -247,24 +247,6 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute right-0 bottom-0 left-0 z-10 flex items-center justify-center px-6 py-6">
-        <div className="flex gap-2" role="tablist" aria-label="Slide indicators">
-          {heroSlides.map((item, i) => (
-            <button
-              key={item.src}
-              type="button"
-              role="tab"
-              aria-selected={i === index}
-              aria-label={`Show slide ${i + 1}`}
-              onClick={() => setIndex(i)}
-              className={`h-2 w-2 rounded-full transition-colors duration-500 ${
-                i === index ? "bg-accent" : "bg-white/30 hover:bg-white/70"
-              }`}
-            />
-          ))}
-        </div>
-      </div>
-
       <p className="sr-only" aria-live="polite">
         Slide {index + 1} of {heroSlides.length}: {slide.alt}
       </p>
