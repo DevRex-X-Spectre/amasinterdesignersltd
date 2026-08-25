@@ -38,10 +38,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/assets/heroes-wall-of-fame.jpg",
-        width: 1200,
-        height: 800,
-        alt: "AMAS Inter Designers signage and fabrication work",
+        url: new URL(site.logo, site.url).toString(),
+        width: 1254,
+        height: 1254,
+        alt: "AMAS Inter Designers Ltd. logo",
       },
     ],
   },
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: site.name,
     description: site.description,
-    images: ["/assets/heroes-wall-of-fame.jpg"],
+    images: [new URL(site.logo, site.url).toString()],
   },
 };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { site } from "@/data/site";
@@ -12,23 +12,14 @@ function announceIntroComplete() {
   window.dispatchEvent(new Event(INTRO_COMPLETE_EVENT));
 }
 
-function subscribe() {
-  return () => {};
-}
-
-function getIntroSeen() {
-  return sessionStorage.getItem("amas-intro") === "1";
-}
-
 export function Intro() {
   const wrap = useRef<HTMLDivElement>(null);
   const panel = useRef<HTMLDivElement>(null);
   const mark = useRef<HTMLDivElement>(null);
   const line = useRef<HTMLDivElement>(null);
   const reduced = usePrefersReducedMotion();
-  const seen = useSyncExternalStore(subscribe, getIntroSeen, () => true);
   const [done, setDone] = useState(false);
-  const play = !reduced && !seen && !done;
+  const play = !reduced && !done;
 
   useEffect(() => {
     if (!play) {
@@ -47,7 +38,6 @@ export function Intro() {
     }
 
     document.body.style.overflow = "hidden";
-    sessionStorage.setItem("amas-intro", "1");
 
     const tl = gsap.timeline({
       defaults: { ease: "power4.inOut" },
@@ -63,6 +53,7 @@ export function Intro() {
 
     tl.to(brand, { y: 0, opacity: 1, duration: 0.7, ease: "power4.out" })
       .to(rule, { scaleX: 1, duration: 0.55, ease: "power3.inOut" }, "-=0.2")
+      .to({}, { duration: 0.5 })
       .to(brand, { y: -24, opacity: 0, duration: 0.45 }, "+=0.25")
       .to(sheet, { yPercent: -110, duration: 0.9 }, "-=0.15");
 

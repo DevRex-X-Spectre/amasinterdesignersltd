@@ -16,9 +16,9 @@ export function JsonLd() {
           addressCountry: "NG",
         },
     sameAs: [
-      site.social.x.href,
       site.social.facebook.href,
       site.social.instagram.href,
+          site.social.tiktok.href,
     ].filter(Boolean),
     areaServed: "NG",
   };
