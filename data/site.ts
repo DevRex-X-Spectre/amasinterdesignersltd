@@ -5,6 +5,7 @@ export const site = {
     primary: "AMAS",
     accent: "Inter",
   },
+  logo: "/assets/logo.png",
   tagline: "Signs, branding, and outdoor work, made and installed.",
   description:
     "AMAS Inter Designers Ltd. designs, builds, and installs signs, branding, print, and outdoor work for businesses, schools, hotels, and public sites.",

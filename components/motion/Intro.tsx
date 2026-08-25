@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { site } from "@/data/site";
 import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
@@ -81,12 +82,19 @@ export function Intro() {
     >
       <div ref={panel} className="flex h-full w-full items-center justify-center bg-background">
         <div className="flex flex-col items-center">
-          <div
-            ref={mark}
-            className="font-display text-4xl font-semibold tracking-[0.28em] uppercase md:text-6xl"
-          >
-            {site.wordmark.primary}
-            <span className="text-accent">{site.wordmark.accent}</span>
+          <div ref={mark} className="flex flex-col items-center">
+            <Image
+              src={site.logo}
+              alt=""
+              width={96}
+              height={96}
+              priority
+              className="mb-6 h-20 w-20 object-contain md:h-24 md:w-24"
+            />
+            <div className="font-display text-4xl font-semibold tracking-[0.28em] uppercase md:text-6xl">
+              {site.wordmark.primary}
+              <span className="text-accent">{site.wordmark.accent}</span>
+            </div>
           </div>
           <div
             ref={line}

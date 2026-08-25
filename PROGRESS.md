@@ -112,7 +112,7 @@ Floating WhatsApp button exists (green FAB). Href is a placeholder until a numbe
 
 ### Home sections (top to bottom)
 
-1. Hero: AMAS photo slideshow, GSAP text reveal, ken-burns, arrows, dots, scroll cue
+1. Hero: AMAS photo slideshow, GSAP text reveal, ken-burns, dots only (no arrows, no progress bar)
 2. Company intro (split image + three points)
 3. Contrast band (split suppliers vs AMAS)
 4. Services preview (4 featured cards)
@@ -128,9 +128,11 @@ Floating WhatsApp button exists (green FAB). Href is a placeholder until a numbe
 
 Content lives in `data/` and is mapped in components. `"use client"` only where needed (nav, slideshow, Lenis/GSAP, forms, filters, lightbox, marquees that use Icon).
 
-**Reveal:** `components/motion/Reveal.tsx` must **not** start as `visibility: hidden`. That hid every section below the hero. Current pattern: content visible by default, `gsap.fromTo` with `immediateRender: false`, Lenis synced via `ScrollTrigger.update()` in `SmoothScroll`.
+**Reveal:** `components/motion/Reveal.tsx` must **not** start as `visibility: hidden`. That hid every section below the hero. Current pattern: `y`/`opacity` only, `immediateRender: false`, driven by **ScrollTrigger** (`start: "top 92%"`, `once`) inside a `gsap.context`, with Lenis synced via `ScrollTrigger.update()` in `SmoothScroll`. Do not go back to `IntersectionObserver`: it fires off Lenis's clock, so sections popped in after they were already on screen.
 
-**Motion (2026-08-22 pass):** Intro curtain (`Intro.tsx`, once per session), desktop custom cursor, magnetic buttons, hero word-split + mouse parallax + slide progress bar, clip-path image reveal, card shine/lift, process line scrub, CTA glow. Respect `prefers-reduced-motion`. Custom cursor is `md+` only and hidden on coarse pointers.
+**Motion (2026-08-22 pass):** Intro curtain (`Intro.tsx`, once per session), desktop custom cursor, magnetic buttons, hero word-split + mouse parallax, clip-path image reveal, card shine/lift, process line scrub, CTA glow. Respect `prefers-reduced-motion`. Custom cursor is `md+` only and hidden on coarse pointers.
+
+`SmoothScroll` also calls `ScrollTrigger.refresh()` on `window.load`, because hero and gallery images settle after hydration and shift every trigger point below them.
 
 **Icons:** register names in `components/icons/register-icons.ts` before using a new Solar/Simple icon.
 

@@ -15,6 +15,14 @@ function LenisScrollTrigger() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.refresh();
+
+    // Hero and gallery images settle after hydration and shift everything below
+    // them. Without this the reveal trigger points are measured against stale
+    // positions and sections fire early or late.
+    if (document.readyState === "complete") return;
+    const onLoad = () => ScrollTrigger.refresh();
+    window.addEventListener("load", onLoad);
+    return () => window.removeEventListener("load", onLoad);
   }, []);
 
   return null;

@@ -34,7 +34,7 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        <Wordmark />
+        <Wordmark priority />
 
         <div className="hidden items-center gap-8 text-sm font-medium text-muted md:flex">
           {navLinks.map((link) => {

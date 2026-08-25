@@ -206,6 +206,11 @@ export function Hero() {
         ref={textRef}
         className="relative z-10 flex max-w-5xl flex-col items-center px-6 text-center"
       >
+        <div className="mb-3 overflow-hidden">
+          <p className="hero-text text-xs font-medium tracking-[0.32em] text-accent uppercase">
+            AMAS Inter Designers
+          </p>
+        </div>
         <div className="mb-3">
           <SplitLine
             text="Signs people notice."
@@ -242,27 +247,6 @@ export function Hero() {
         </div>
       </div>
 
-      <Magnetic className="absolute top-1/2 left-6 z-10 hidden -translate-y-1/2 md:block" strength={0.4}>
-        <button
-          type="button"
-          onClick={() => go(-1)}
-          className="flex h-12 w-12 items-center justify-center border border-white/20 text-white backdrop-blur-sm transition-colors hover:border-accent hover:text-accent"
-          aria-label="Previous slide"
-        >
-          <Icon icon="solar:arrow-left-linear" className="text-xl" />
-        </button>
-      </Magnetic>
-      <Magnetic className="absolute top-1/2 right-6 z-10 hidden -translate-y-1/2 md:block" strength={0.4}>
-        <button
-          type="button"
-          onClick={() => go(1)}
-          className="flex h-12 w-12 items-center justify-center border border-white/20 text-white backdrop-blur-sm transition-colors hover:border-accent hover:text-accent"
-          aria-label="Next slide"
-        >
-          <Icon icon="solar:arrow-right-linear" className="text-xl" />
-        </button>
-      </Magnetic>
-
       <div className="absolute right-0 bottom-0 left-0 z-10 flex items-center justify-center px-6 py-6">
         <div className="flex gap-2" role="tablist" aria-label="Slide indicators">
           {heroSlides.map((item, i) => (
@@ -273,8 +257,8 @@ export function Hero() {
               aria-selected={i === index}
               aria-label={`Show slide ${i + 1}`}
               onClick={() => setIndex(i)}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                i === index ? "w-10 bg-accent" : "w-2 bg-white/30 hover:bg-white/70"
+              className={`h-2 w-2 rounded-full transition-colors duration-500 ${
+                i === index ? "bg-accent" : "bg-white/30 hover:bg-white/70"
               }`}
             />
           ))}
