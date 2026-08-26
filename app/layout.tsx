@@ -41,10 +41,11 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: new URL("/assets/opengraph-image.png", site.url).toString(),
+        url: "/assets/opengraph-image.png",
         width: 1080,
         height: 1080,
-        alt: "AMAS Inter Designers Ltd. logo",
+        type: "image/png",
+        alt: "AMAS Inter Designers Ltd. Designing your vision",
       },
     ],
   },
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: site.name,
     description: site.description,
-    images: [new URL("/assets/opengraph-image.png", site.url).toString()],
+    images: ["/assets/opengraph-image.png"],
   },
 };
 

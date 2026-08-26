@@ -17,7 +17,7 @@ export default function GalleryPage() {
         title="The work, as photographed"
         description="Finished signs, branding, metalwork, and installs. Click a photo to open it larger."
       />
-      <section className="bg-background py-20">
+      <section className="bg-background py-16 md:py-20">
         <Container>
           <GalleryGrid />
         </Container>

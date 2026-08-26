@@ -62,13 +62,24 @@ export function Lightbox({ items, index, onClose, onIndex }: LightboxProps) {
         className="relative h-[80vh] w-full max-w-5xl"
         onClick={(event) => event.stopPropagation()}
       >
-        <Image
-          src={item.src}
-          alt={item.alt}
-          fill
-          sizes="90vw"
-          className="object-contain"
-        />
+        {item.type === "video" ? (
+          <video
+            src={item.src}
+            className="h-full w-full object-contain"
+            controls
+            autoPlay
+            playsInline
+            aria-label={item.alt}
+          />
+        ) : (
+          <Image
+            src={item.src}
+            alt={item.alt}
+            fill
+            sizes="90vw"
+            className="object-contain"
+          />
+        )}
       </div>
       <button
         type="button"
